@@ -75,7 +75,7 @@ export default async function PostPage({ params }: PostPageProps) {
           color: '#000',
           wordBreak: 'keep-all'
         }}>{post.title}</h1>
-        <p style={{ marginTop: '1.5rem', fontSize: '1.1rem', color: '#666' }}>후한의원 구미점 공식 블로그</p>
+        <p style={{ marginTop: '1.5rem', fontSize: '1.1rem', color: '#666' }}>후한의원 구미점</p>
       </header>
       
       <div 
