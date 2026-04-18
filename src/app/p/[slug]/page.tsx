@@ -87,6 +87,29 @@ export default async function PostPage({ params }: PostPageProps) {
         }}
         dangerouslySetInnerHTML={{ __html: post.content }} 
       />
+
+      <style jsx global>{`
+        .blog-content img {
+          max-width: 100%;
+          height: auto;
+          display: block;
+          margin: 2.5rem auto;
+          border-radius: 4px;
+          box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+        @media (max-width: 768px) {
+          article {
+            padding: 2rem !important;
+            margin: 0 !important;
+          }
+          h1 {
+            font-size: 2.2rem !important;
+          }
+          .blog-content {
+            font-size: 1.05rem !important;
+          }
+        }
+      `}</style>
       
       <section style={{ marginTop: '8rem' }}>
         <h3 style={{ 

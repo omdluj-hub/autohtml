@@ -21,9 +21,7 @@ const HOSPITAL_INFO = `
 `;
 
 const IMAGE_LIST = [
-  "다요스틱.JPG", "다요정.jpg", "다이어트.jpg", "미감에스2.jpg", "미감탕.JPG", 
-  "비움탕2.jpg", "인바디검사.jpg", "인테리어 (1).JPG", "인테리어 (2).JPG", 
-  "일반침.jpg", "자보.jpg", "피부.jpg", "후한의원_구미.png", "redface.jpg"
+  "%EB%8B%A4%EC%9A%94%EC%8A%A4%ED%8B%B1.JPG", "%EB%8B%A4%EC%9A%94%EC%8A%A4%ED%8B%B12.JPG", "%EB%8B%A4%EC%9A%94%EC%A0%95.jpg", "%EB%8B%A4%EC%9A%94%EC%A0%952.jpg", "%EB%8B%A4%EC%9D%B4%EC%96%B4%ED%8A%B8.jpg", "%EB%AF%B8%EA%B0%90%EC%97%90%EC%8A%A42.jpg", "%EB%AF%B8%EA%B0%90%ED%83%95.JPG", "%EB%AF%B8%EA%B0%90%ED%83%952.JPG", "%EB%B9%84%EC%9B%80%ED%83%952.jpg", "%EC%9D%B8%EB%B0%94%EB%94%94%EA%B2%80%EC%82%AC.jpg", "%EC%9D%B8%ED%85%8C%EB%A6%AC%EC%96%B4%20(1).JPG", "%EC%9D%B8%ED%85%8C%EB%A6%AC%EC%96%B4%20(2).JPG", "%EC%9D%B8%ED%85%8C%EB%A6%AC%EC%96%B4%20(3).JPG", "%EC%9D%B8%ED%85%8C%EB%A6%AC%EC%96%B4%20(4).JPG", "%EC%9D%B8%ED%85%8C%EB%A6%AC%EC%96%B4%20(5).jpg", "%EC%9D%BC%EB%B0%98%EC%B9%A8.jpg", "%EC%9E%90%EB%B3%B4.jpg", "%ED%94%BC%EB%B6%80.jpg", "%ED%9B%84%ED%95%9C%EC%92%98%EC%9D%98%EC%9B%90_%EA%B5%AC%EB%AF%B8.png", "redface.jpg"
 ];
 
 async function generatePost(topic) {
@@ -39,7 +37,7 @@ async function generatePost(topic) {
     1. 글의 맥락에 가장 잘 어울리는 이미지를 위 목록에서 **최소 3개 이상** 선택하여 본문에 삽입하세요.
     2. 마크다운 이미지 문법을 사용하세요: ![설명](/images/파일명)
     3. 이미지 앞뒤로 관련 설명을 배치하여 자연스럽게 연결되도록 하세요.
-    4. 예: 다이어트 관련 글이라면 '미감탕.JPG', '인바디검사.jpg' 등을 사용.
+    4. 예: 다이어트 관련 글이라면 '%EB%AF%B8%EA%B0%90%ED%83%95.JPG', '%EC%9D%B8%EB%B0%94%EB%94%94%EA%B2%80%EC%82%AC.jpg' 등을 사용.
 
     [글 작성 가이드라인]
     1. **톤앤매너**: 친절하고 전문적인 어투(~해요, ~입니다) 사용.
