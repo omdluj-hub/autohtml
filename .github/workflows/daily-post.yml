@@ -38,6 +38,7 @@ jobs:
           branch: main
 
       - name: Trigger Vercel Deploy Hook
-        if: steps.commit_changes.outputs.changes_detected == 'true'
         run: |
+          echo "Triggering Vercel Deploy Hook..."
           curl -X POST "${{ secrets.VERCEL_DEPLOY_HOOK_URL }}"
+          echo "Deploy hook sent successfully."
