@@ -6,13 +6,13 @@ import path from "path";
 const API_KEY = process.env.GEMINI_API_KEY;
 const genAI = new GoogleGenerativeAI(API_KEY);
 const model = genAI.getGenerativeModel({ 
-  model: "gemini-1.5-flash",
+  model: "gemini-3-flash-preview",
   generationConfig: {
-    maxOutputTokens: 2048,
-    temperature: 0.7,
+    maxOutputTokens: 4096,
+    temperature: 0.8,
   }
 });
-
+Applied fuzzy match at line 6-13.
 const HOSPITAL_INFO = `
 병원 이름: 후한의원 구미점
 대표 원장: 이언호 (직접 압출 및 시술 진행)
