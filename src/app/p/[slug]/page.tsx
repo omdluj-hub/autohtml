@@ -108,7 +108,7 @@ export default async function PostPage({ params }: PostPageProps) {
           border: '1px solid #eee'
         }}>
           <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3229.467814424357!2d128.41738707675628!3d36.08202517245155!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3566453666666667%3A0xc666666666666666!2z7ZuE7ZWc7J2Y7JuQIOq1rOuvuOydkA!5e0!3m2!1sko!2skr!4v1713400000000!5m2!1sko!2skr" 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3228.3245468779!2d128.41257957675747!3d36.107975272421375!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3566456f96666667%3A0x6e66666666666666!2z7ZuE7ZWc7J2Y7JuQIOq1rOuvuOydkA!5e0!3m2!1sko!2skr!4v1713400000000!5m2!1sko!2skr" 
             width="100%" 
             height="100%" 
             style={{ border: 0 }} 
@@ -131,7 +131,7 @@ export default async function PostPage({ params }: PostPageProps) {
             <h4 style={{ margin: '0 0 1rem 0', color: '#fff', fontSize: '1.2rem' }}>Contact</h4>
             <p style={{ margin: '0.3rem 0', color: '#ccc' }}>Tel. 054-474-1075</p>
             <a 
-              href="https://map.naver.com/v5/entry/place/31314144" 
+              href="https://naver.me/5N15Owng" 
               target="_blank" 
               rel="noopener noreferrer"
               style={{ 
