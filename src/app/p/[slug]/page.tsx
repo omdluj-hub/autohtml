@@ -108,7 +108,7 @@ export default async function PostPage({ params }: PostPageProps) {
           border: '1px solid #eee'
         }}>
           <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3228.3245468779!2d128.41257957675747!3d36.107975272421375!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3566996966666667%3A0xe666666666666666!2z7ZuE7ZWc7J2Y7JuQIOq1rOuvuOydkA!5e0!3m2!1sko!2skr!4v1713400000000!5m2!1sko!2skr" 
+            src="https://maps.google.com/maps?q=%ED%9B%84%ED%95%9C%EC%9D%98%EC%9B%90%20%EA%B5%AC%EB%AF%B8%EC%A0%90&t=&z=17&ie=UTF8&iwloc=&output=embed" 
             width="100%" 
             height="100%" 
             style={{ border: 0 }} 
