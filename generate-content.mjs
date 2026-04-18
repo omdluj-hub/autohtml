@@ -51,13 +51,13 @@ async function generatePost(topic) {
     date: "YYYY-MM-DD"
     description: "글에 대한 짧은 요약(1~2문장)"
     ---
-    
+
     [주의사항]
     - 마크다운(Markdown) 형식으로 작성하세요.
     - 병원 이름 '후한의원 구미점'이 자연스럽게 반복되도록 하세요.
     - 의료법을 준수하여 '무조건 완치', '부작용 없음' 같은 단어는 피하고 '개인차에 따른 맞춤 치료'임을 강조하세요.
     - 작성된 내용은 마크다운 본문만 출력하세요.
-  `;
+    `;
 
   const result = await model.generateContent(prompt);
   const response = await result.response;
