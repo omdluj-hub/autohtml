@@ -37,31 +37,35 @@ async function generatePost(topic) {
     1. 글의 맥락에 가장 잘 어울리는 이미지를 위 목록에서 **최소 3개 이상** 선택하여 본문에 삽입하세요.
     2. 마크다운 이미지 문법을 사용하세요: ![설명](/images/파일명)
     3. 이미지 앞뒤로 관련 설명을 배치하여 자연스럽게 연결되도록 하세요.
-    4. 예: 다이어트 관련 글이라면 '%EB%AF%B8%EA%B0%90%ED%83%95.JPG', '%EC%9D%B8%EB%B0%94%EB%94%94%EA%B2%80%EC%82%AC.jpg' 등을 사용.
 
     [글 작성 가이드라인]
     1. **톤앤매너**: 친절하고 전문적인 어투(~해요, ~입니다) 사용.
-    2. **서론**: 독자의 고민에 공감하며 시작.
-    3. **본문 구성**: 이모지 적절히 사용, 소제목으로 체계적 구성, Q&A 섹션 포함.
+    2. **서론**: 독자의 고민에 공감하며 시작 (주제와 관련된 일상적인 예시 포함).
+    3. **본문 구성**: 이모지 적절히 사용, 소제목(H2, H3)으로 체계적 구성, Q&A 섹션 포함.
     4. **결론**: 따뜻한 위로와 병원 방문 권유.
-    5. **최소 분량**: 본문 공백 제외 1500자 이상.
-    6. **Frontmatter**: 반드시 아래 형식 유지.
+    5. **최소 분량**: 본문 공백 제외 1500자 이상으로 아주 상세하게 작성.
+    6. **Frontmatter**: 반드시 아래 형식 유지 (다른 텍스트 없이 마크다운의 시작에 위치해야 함).
     ---
     title: "글 제목"
-    date: "YYYY-MM-DD"
+    date: "${new Date().toISOString().split('T')[0]}"
     description: "글에 대한 짧은 요약(1~2문장)"
     ---
-
+    
     [주의사항]
-    - 마크다운(Markdown) 형식으로 작성하세요.
-    - 병원 이름 '후한의원 구미점'이 자연스럽게 반복되도록 하세요.
+    - 반드시 마크다운(Markdown) 형식으로 작성하세요.
     - 의료법을 준수하여 '무조건 완치', '부작용 없음' 같은 단어는 피하고 '개인차에 따른 맞춤 치료'임을 강조하세요.
-    - 작성된 내용은 마크다운 본문만 출력하세요.
-    `;
+    - 작성된 내용은 마크다운 본문만 출력하세요. 다른 잡담은 하지 마세요.
+  `;
 
   const result = await model.generateContent(prompt);
   const response = await result.response;
-  return response.text();
+  const text = response.text();
+  
+  if (!text || text.length < 100) {
+    throw new Error("Generated content is too short or empty.");
+  }
+  
+  return text;
 }
 
 async function main() {
@@ -70,10 +74,10 @@ async function main() {
     process.exit(1);
   }
 
-  const topics = [
-    "구미 여드름 흉터 치료, 왜 후한의원인가?",
-    "겨울철 효과적인 다이어트 한약, 미감탕의 비밀",
-    "구미 교통사고 입원실 찾으시나요? 1인실 중심의 편안한 회복",
+  const baseTopics = [
+    "구미 여드름 흉터 치료 원리와 후한의원의 20년 노하우",
+    "요요 없는 다이어트 한약, 미감탕이 몸에 미치는 영향",
+    "교통사고 후유증 방치하면 안되는 이유와 1인실 입원실 안내",
   ];
 
   const contentDir = path.join(process.cwd(), "content");
@@ -81,18 +85,20 @@ async function main() {
     fs.mkdirSync(contentDir);
   }
 
-  const today = new Date().toISOString().split("T")[0];
+  const now = new Date();
+  const dateStr = now.toISOString().split("T")[0];
+  const timestamp = Math.floor(now.getTime() / 1000);
 
-  for (let i = 0; i < topics.length; i++) {
-    console.log(`Generating post ${i + 1}/${topics.length}: ${topics[i]}`);
+  for (let i = 0; i < baseTopics.length; i++) {
+    console.log(`Generating post ${i + 1}/${baseTopics.length}: ${baseTopics[i]}`);
     try {
-      const content = await generatePost(topics[i]);
-      const slug = `${today}-post-${i + 1}`;
-      const fileName = `${slug}.md`;
+      const content = await generatePost(baseTopics[i]);
+      const fileName = `${dateStr}-${timestamp}-${i + 1}.md`;
       fs.writeFileSync(path.join(contentDir, fileName), content);
-      console.log(`Saved ${fileName}`);
+      console.log(`Successfully saved ${fileName}`);
     } catch (error) {
-      console.error(`Error generating post ${i + 1}:`, error);
+      console.error(`CRITICAL ERROR generating post ${i + 1}:`, error);
+      process.exit(1); // Stop the entire process on failure
     }
   }
 }
