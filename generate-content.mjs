@@ -12,7 +12,7 @@ const model = genAI.getGenerativeModel({
     temperature: 0.8,
   }
 });
-Applied fuzzy match at line 6-13.
+
 const HOSPITAL_INFO = `
 병원 이름: 후한의원 구미점
 대표 원장: 이언호 (직접 압출 및 시술 진행)
