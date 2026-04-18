@@ -32,6 +32,6 @@ jobs:
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "docs: add daily hospital posts [skip ci]"
+          commit_message: "docs: add daily hospital posts"
           file_pattern: 'content/*.md'
           branch: main
