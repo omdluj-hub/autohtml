@@ -5,7 +5,7 @@ import path from "path";
 // Configuration
 const API_KEY = process.env.GEMINI_API_KEY;
 const genAI = new GoogleGenerativeAI(API_KEY);
-const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash-latest" });
 
 const HOSPITAL_INFO = `
 병원 이름: 후한의원 구미점
