@@ -30,7 +30,7 @@ const IMAGE_LIST = [
   "%EB%8B%A4%EC%9A%94%EC%8A%A4%ED%8B%B1.JPG", "%EB%8B%A4%EC%9A%94%EC%8A%A4%ED%8B%B12.JPG", "%EB%8B%A4%EC%9A%94%EC%A0%95.jpg", "%EB%8B%A4%EC%9A%94%EC%A0%952.jpg", "%EB%8B%A4%EC%9D%B4%EC%96%B4%ED%8A%B8.jpg", "%EB%AF%B8%EA%B0%90%EC%97%90%EC%8A%A42.jpg", "%EB%AF%B8%EA%B0%90%ED%83%95.JPG", "%EB%AF%B8%EA%B0%90%ED%83%952.JPG", "%EB%B9%84%EC%9B%80%ED%83%952.jpg", "%EC%9D%B8%EB%B0%94%EB%94%94%EA%B2%80%EC%82%AC.jpg", "%EC%9D%B8%ED%85%8C%EB%A6%AC%EC%96%B4%20(1).JPG", "%EC%9D%B8%ED%85%8C%EB%A6%AC%EC%96%B4%20(2).JPG", "%EC%9D%B8%ED%85%8C%EB%A6%AC%EC%96%B4%20(3).JPG", "%EC%9D%B8%ED%85%8C%EB%A6%AC%EC%96%B4%20(4).JPG", "%EC%9D%B8%ED%85%8C%EB%A6%AC%EC%96%B4%20(5).jpg", "%EC%9D%BC%EB%B0%98%EC%B9%A8.jpg", "%EC%9E%90%EB%B3%B4.jpg", "%ED%94%BC%EB%B6%80.jpg", "%ED%9B%84%ED%95%9C%EC%92%98%EC%9D%98%EC%9B%90_%EA%B5%AC%EB%AF%B8.png", "redface.jpg"
 ];
 
-async function generatePost(topic) {
+async function generatePost(topic, retryCount = 0) {
   const prompt = `
     당신은 10년차 전문 건강/의학 블로거이자 병원 마케터입니다. 
     제공된 병원 정보와 이미지 목록을 바탕으로, 티스토리나 네이버 블로그 형식의 전문적인 글을 작성해주세요.
@@ -63,15 +63,25 @@ async function generatePost(topic) {
     - 작성된 내용은 마크다운 본문만 출력하세요. 다른 잡담은 하지 마세요.
   `;
 
-  const result = await model.generateContent(prompt);
-  const response = await result.response;
-  const text = response.text();
-  
-  if (!text || text.length < 100) {
-    throw new Error("Generated content is too short or empty.");
+  try {
+    const result = await model.generateContent(prompt);
+    const response = await result.response;
+    const text = response.text();
+    
+    if (!text || text.length < 100) {
+      throw new Error("Generated content is too short or empty.");
+    }
+    return text;
+  } catch (error) {
+    // 503 Service Unavailable or 429 Too Many Requests
+    if ((error.status === 503 || error.status === 429) && retryCount < 3) {
+      const waitTime = (retryCount + 1) * 5000;
+      console.log(`Server busy (Status ${error.status}). Retrying in ${waitTime/1000}s... (Attempt ${retryCount + 1}/3)`);
+      await new Promise(resolve => setTimeout(resolve, waitTime));
+      return generatePost(topic, retryCount + 1);
+    }
+    throw error;
   }
-  
-  return text;
 }
 
 async function main() {
