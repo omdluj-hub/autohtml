@@ -30,8 +30,14 @@ jobs:
         run: node generate-content.mjs
 
       - name: Commit changes
+        id: commit_changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "docs: add daily hospital posts"
           file_pattern: 'content/*.md'
           branch: main
+
+      - name: Trigger Vercel Deploy Hook
+        if: steps.commit_changes.outputs.changes_detected == 'true'
+        run: |
+          curl -X POST "${{ secrets.VERCEL_DEPLOY_HOOK_URL }}"
