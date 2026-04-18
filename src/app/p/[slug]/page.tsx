@@ -44,57 +44,104 @@ export default async function PostPage({ params }: PostPageProps) {
 
   return (
     <article style={{ 
-      maxWidth: '900px', 
-      margin: '2rem auto', 
-      padding: '3rem', 
-      backgroundColor: '#fff',
-      borderRadius: '12px',
-      boxShadow: '0 4px 20px rgba(0,0,0,0.05)',
-      fontFamily: '"Pretendard", -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif',
-      color: '#333'
+      maxWidth: '850px', 
+      margin: '4rem auto', 
+      padding: '4rem', 
+      backgroundColor: '#ffffff',
+      color: '#1a1a1a',
+      fontFamily: '"Pretendard", -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif',
+      lineHeight: '1.6',
+      letterSpacing: '-0.02em'
     }}>
       <header style={{ 
-        marginBottom: '3rem', 
-        textAlign: 'center',
-        borderBottom: '2px solid #f0f0f0', 
-        paddingBottom: '2rem' 
+        marginBottom: '5rem', 
+        textAlign: 'left',
+        borderLeft: '4px solid #000',
+        paddingLeft: '2rem'
       }}>
+        <time style={{ 
+          fontSize: '0.9rem', 
+          color: '#888', 
+          fontWeight: '500',
+          textTransform: 'uppercase',
+          display: 'block',
+          marginBottom: '1rem'
+        }}>{post.date}</time>
         <h1 style={{ 
-          fontSize: '2.5rem', 
-          lineHeight: '1.4',
-          marginBottom: '1rem', 
-          color: '#111',
+          fontSize: '3.2rem', 
+          lineHeight: '1.2',
+          fontWeight: '800',
+          margin: 0,
+          color: '#000',
           wordBreak: 'keep-all'
         }}>{post.title}</h1>
-        <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', color: '#888', fontSize: '0.95rem' }}>
-          <span>후한의원 구미점</span>
-          <span>•</span>
-          <time>{post.date}</time>
-        </div>
+        <p style={{ marginTop: '1.5rem', fontSize: '1.1rem', color: '#666' }}>후한의원 구미점 공식 블로그</p>
       </header>
       
       <div 
         className="blog-content"
         style={{ 
-          lineHeight: '2', 
-          fontSize: '1.2rem', 
-          color: '#444' 
+          lineHeight: '2.1', 
+          fontSize: '1.15rem', 
+          color: '#2c2c2c' 
         }}
         dangerouslySetInnerHTML={{ __html: post.content }} 
       />
       
-      <footer style={{ 
-        marginTop: '5rem', 
-        padding: '2.5rem', 
-        backgroundColor: '#f9f9f9',
-        borderRadius: '8px',
-        borderLeft: '5px solid #0070f3'
-      }}>
-        <h4 style={{ marginTop: 0, marginBottom: '1rem', fontSize: '1.3rem', color: '#111' }}>📍 오시는 길 & 상담 안내</h4>
-        <p style={{ margin: '0.5rem 0' }}><strong>주소:</strong> 경상북도 구미시 인동가산로 9-3 노블레스타워 4층</p>
-        <p style={{ margin: '0.5rem 0' }}><strong>전화문의:</strong> <span style={{ color: '#0070f3', fontWeight: 'bold' }}>054-474-1075</span></p>
-        <p style={{ margin: '0.5rem 0', fontSize: '0.95rem', color: '#666' }}>※ 365일 진료 및 1인실 위주 입원실 운영 (여드름, 다이어트, 교통사고)</p>
-      </footer>
+      <section style={{ marginTop: '8rem' }}>
+        <h3 style={{ 
+          fontSize: '1.8rem', 
+          fontWeight: '700', 
+          marginBottom: '2rem',
+          color: '#000',
+          textAlign: 'center'
+        }}>Location</h3>
+        
+        {/* Google Maps Embed */}
+        <div style={{ 
+          width: '100%', 
+          height: '450px', 
+          backgroundColor: '#f5f5f5',
+          borderRadius: '2px',
+          overflow: 'hidden',
+          marginBottom: '3rem',
+          border: '1px solid #eee'
+        }}>
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3229.467814424357!2d128.41738707675628!3d36.08202517245155!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3566453666666667%3A0xc666666666666666!2z7ZuE7ZWc7J2Y7JuQIOq1rOuvuOydkA!5e0!3m2!1sko!2skr!4v1713400000000!5m2!1sko!2skr" 
+            width="100%" 
+            height="100%" 
+            style={{ border: 0 }} 
+            allowFullScreen={true} 
+            loading="lazy" 
+            referrerPolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+
+        <div style={{ 
+          padding: '3rem', 
+          backgroundColor: '#1a1a1a',
+          color: '#fff',
+          borderRadius: '2px',
+          display: 'grid',
+          gridTemplateColumns: '1fr 1fr',
+          gap: '2rem'
+        }}>
+          <div>
+            <h4 style={{ margin: '0 0 1rem 0', color: '#fff', fontSize: '1.2rem' }}>Contact</h4>
+            <p style={{ margin: '0.3rem 0', color: '#ccc' }}>Tel. 054-474-1075</p>
+            <p style={{ margin: '0.3rem 0', color: '#ccc' }}>Fax. 054-474-1076</p>
+          </div>
+          <div>
+            <h4 style={{ margin: '0 0 1rem 0', color: '#fff', fontSize: '1.2rem' }}>Address</h4>
+            <p style={{ margin: '0.3rem 0', color: '#ccc' }}>경상북도 구미시 인동가산로 9-3</p>
+            <p style={{ margin: '0.3rem 0', color: '#ccc' }}>노블레스타워 4층 (인동 황상동)</p>
+          </div>
+          <div style={{ gridColumn: 'span 2', paddingTop: '1.5rem', borderTop: '1px solid #333', fontSize: '0.9rem', color: '#888' }}>
+            © HOOCLINIC GUMI. 365 Days Clinic. Professional Skin & Diet Care.
+          </div>
+        </div>
+      </section>
     </article>
   );
 }
