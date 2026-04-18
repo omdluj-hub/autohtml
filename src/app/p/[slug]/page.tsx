@@ -131,7 +131,7 @@ export default async function PostPage({ params }: PostPageProps) {
             <h4 style={{ margin: '0 0 1rem 0', color: '#fff', fontSize: '1.2rem' }}>Contact</h4>
             <p style={{ margin: '0.3rem 0', color: '#ccc' }}>Tel. 054-474-1075</p>
             <a 
-              href="https://m.place.naver.com/hospital/13529227/booking" 
+              href="https://map.naver.com/v5/entry/place/31314144" 
               target="_blank" 
               rel="noopener noreferrer"
               style={{ 
@@ -146,7 +146,7 @@ export default async function PostPage({ params }: PostPageProps) {
                 fontSize: '0.9rem'
               }}
             >
-              N 네이버 예약하기
+              N 네이버 플레이스
             </a>
           </div>
           <div>
