@@ -12,6 +12,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+// Trigger redeploy to fix Vercel UI timeout
 export const metadata: Metadata = {
   metadataBase: new URL('https://autohtml.vercel.app'),
   title: "후한의원 구미점",
