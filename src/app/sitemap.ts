@@ -3,7 +3,7 @@ import { getAllPosts } from '@/lib/posts';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const posts = await getAllPosts();
-  const baseUrl = 'https://your-vercel-domain.vercel.app'; // Replace with actual domain
+  const baseUrl = 'https://autohtml.vercel.app'; // Actual domain
 
   const postEntries: MetadataRoute.Sitemap = posts.map((post) => ({
     url: `${baseUrl}/p/${post.slug}`,
