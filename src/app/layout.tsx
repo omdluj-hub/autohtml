@@ -13,11 +13,13 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-// Trigger redeploy to fix Vercel UI timeout
 export const metadata: Metadata = {
   metadataBase: new URL('https://autohtml.vercel.app'),
   title: "후한의원 구미점",
   description: "구미 여드름, 다이어트, 교통사고 치료 한의원 - 후한의원 구미점입니다.",
+  alternates: {
+    canonical: '/',
+  },
   verification: {
     google: "w5NQ-WHd-o_hcKnF8bJoc-WAOklZtZcNapkaNAwDm6A",
   },

@@ -100,11 +100,22 @@ async function main() {
     process.exit(1);
   }
 
-  const baseTopics = [
+  const allTopics = [
     "구미 여드름 흉터 치료 원리와 후한의원의 20년 노하우",
     "요요 없는 다이어트 한약, 미감탕이 몸에 미치는 영향",
     "교통사고 후유증 방치하면 안되는 이유와 1인실 입원실 안내",
+    "손발 사마귀, 전염성 강한 사마귀의 한방 면역 치료법",
+    "얼굴과 목 편평사마귀, 깨끗한 피부를 위한 저자극 제거와 면역 강화",
+    "쥐젖 제거와 피부결 개선, 한방으로 관리하는 매끄러운 피부",
+    "안면홍조 원인 치료, 열감을 내리고 혈관을 강화하는 한방 요법",
+    "지루성 피부염 가려움과 염증, 피부 장벽을 회복하는 근본 치료",
+    "열성 탈모 방치하지 마세요, 두피 열을 내리는 한방 탈모 관리",
+    "건선 치료의 핵심, 면역 균형을 바로잡는 한방 독소 배출",
+    "아토피 피부염 가려움증 완화와 면역 체계 개선 방안"
   ];
+
+  // Randomly select 3 topics from the list
+  const baseTopics = allTopics.sort(() => 0.5 - Math.random()).slice(0, 3);
 
   const contentDir = path.join(process.cwd(), "content");
   if (!fs.existsSync(contentDir)) {

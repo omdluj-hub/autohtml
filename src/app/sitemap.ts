@@ -1,6 +1,8 @@
 import { MetadataRoute } from 'next';
 import { getAllPosts } from '@/lib/posts';
 
+export const revalidate = 3600; // Revalidate sitemap every hour
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const posts = await getAllPosts();
   const baseUrl = 'https://autohtml.vercel.app'; // Actual domain
