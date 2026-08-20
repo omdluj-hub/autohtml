@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
@@ -34,6 +35,9 @@ export const metadata: Metadata = {
     telephone: true,
     address: true,
   },
+  other: {
+    "google-adsense-account": "ca-pub-6770397884295603",
+  },
   openGraph: {
     type: "website",
     locale: "ko_KR",
@@ -65,6 +69,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
+      <head>
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6770397884295603"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
+      </head>
       <body>
         <AnalyticsTracker />
         <Header />
