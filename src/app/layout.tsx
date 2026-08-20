@@ -70,12 +70,12 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <head>
-        <Script
+        <meta name="google-adsense-account" content="ca-pub-6770397884295603" />
+        <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6770397884295603"
           crossOrigin="anonymous"
-          strategy="afterInteractive"
-        />
+        ></script>
       </head>
       <body>
         <AnalyticsTracker />
