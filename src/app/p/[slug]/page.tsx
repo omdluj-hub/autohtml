@@ -331,7 +331,7 @@ export default async function PostPage({ params }: PostPageProps) {
             </a>
           </div>
 
-          {/* Google Maps Embed with Clinic Name Place Pin */}
+          {/* Google Maps Embed with Center Coordinate and Place Pin */}
           <div style={{
             width: '100%',
             height: '420px',
@@ -344,7 +344,7 @@ export default async function PostPage({ params }: PostPageProps) {
           }}>
             <iframe
               title="후한의원 구미점 지도"
-              src="https://maps.google.com/maps?q=%ED%9B%84%ED%95%9C%EC%9D%98%EC%9B%90%20%EA%B5%AC%EB%AF%B8%EC%A0%90&t=&z=17&ie=UTF8&iwloc=B&output=embed"
+              src="https://maps.google.com/maps?q=%ED%9B%84%ED%95%9C%EC%9D%98%EC%9B%90%20%EA%B5%AC%EB%AF%B8%EC%A0%90&ll=36.115843,128.406987&z=17&t=m&hl=ko&output=embed"
               width="100%"
               height="100%"
               style={{ border: 0 }}
