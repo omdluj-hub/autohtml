@@ -281,10 +281,60 @@ export default async function PostPage({ params }: PostPageProps) {
             </p>
           </div>
 
-          {/* Google Maps Embed */}
+          {/* Quick Map Action Buttons */}
+          <div style={{
+            display: 'flex',
+            justifyContent: 'center',
+            gap: '0.75rem',
+            marginBottom: '1rem',
+            flexWrap: 'wrap'
+          }}>
+            <a
+              href="https://map.naver.com/p/search/%EA%B2%BD%EC%83%81%EB%B6%81%EB%8F%84%20%EA%B5%AC%EB%AF%B8%EC%8B%9C%20%EC%9D%B8%EB%8F%99%EA%B0%80%EC%82%B0%EB%A1%9C%209-3"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                padding: '0.5rem 1.1rem',
+                backgroundColor: '#03C75A',
+                color: '#fff',
+                borderRadius: 'var(--radius-full)',
+                fontSize: '0.85rem',
+                fontWeight: 700,
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.35rem',
+                boxShadow: 'var(--shadow-sm)'
+              }}
+            >
+              <span>N</span>
+              <span>네이버 지도로 보기</span>
+            </a>
+            <a
+              href="https://map.kakao.com/link/search/%EA%B2%BD%EC%83%81%EB%B6%81%EB%8F%84%20%EA%B5%AC%EB%AF%B8%EC%8B%9C%20%EC%9D%B8%EB%8F%99%EA%B0%80%EC%82%B0%EB%A1%9C%209-3"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                padding: '0.5rem 1.1rem',
+                backgroundColor: '#FEE500',
+                color: '#191919',
+                borderRadius: 'var(--radius-full)',
+                fontSize: '0.85rem',
+                fontWeight: 700,
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.35rem',
+                boxShadow: 'var(--shadow-sm)'
+              }}
+            >
+              <span>📍</span>
+              <span>카카오맵으로 보기</span>
+            </a>
+          </div>
+
+          {/* Google Maps Embed with Exact Lat/Lng Pin */}
           <div style={{
             width: '100%',
-            height: '400px',
+            height: '420px',
             backgroundColor: 'var(--slate-100)',
             borderRadius: 'var(--radius-lg)',
             overflow: 'hidden',
@@ -293,8 +343,8 @@ export default async function PostPage({ params }: PostPageProps) {
             boxShadow: 'var(--shadow-md)'
           }}>
             <iframe
-              title="후한의원 구미점 지도"
-              src="https://maps.google.com/maps?q=%ED%9B%84%ED%95%9C%EC%9D%98%EC%9B%90%20%EA%B5%AC%EB%AF%B8%EC%A0%90&t=&z=17&ie=UTF8&iwloc=&output=embed"
+              title="후한의원 구미점 지도 (구미시 인동가산로 9-3 노블레스타워)"
+              src="https://maps.google.com/maps?q=36.115843,128.406987+(%ED%9B%84%ED%95%9C%EC%9D%98%EC%9B%90+%EA%B5%AC%EB%AF%B8%EC%A0%90)&hl=ko&z=17&output=embed"
               width="100%"
               height="100%"
               style={{ border: 0 }}
